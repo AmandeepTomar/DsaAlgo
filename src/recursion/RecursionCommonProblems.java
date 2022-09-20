@@ -25,6 +25,9 @@ public class RecursionCommonProblems {
 
         System.out.println(obj.findFirstUpperCase("appMillerS"));
 
+        int arr1[] = {11, 4, 12, 9};
+        System.out.println(obj.findMaximum(arr1, arr1.length));
+
 
     }
 
@@ -190,16 +193,42 @@ public class RecursionCommonProblems {
      * output : I Love Java
      */
     private String capitalizesWord(String str) {
-        if(str.isEmpty()) {
+        if (str.isEmpty()) {
             return str;
         }
-        char chr = str.charAt(str.length()-1);
-        if(str.length()==1) {
+        char chr = str.charAt(str.length() - 1);
+        if (str.length() == 1) {
             return Character.toString(Character.toUpperCase(chr));
         }
-        if((str.charAt(str.length() - 2) == ' ')) {
+        if ((str.charAt(str.length() - 2) == ' ')) {
             chr = Character.toUpperCase(chr);
         }
-        return capitalizesWord(str.substring(0,str.length()-1))+ Character.toString(chr);
+        return capitalizesWord(str.substring(0, str.length() - 1)) + Character.toString(chr);
+    }
+
+    /**
+     * int arr1[] = {11, 4, 12, 9};
+     * Now Resursive call
+     * max(arr(4-1),findMaximum(arr,3))=>max(9,12)
+     * -> findMaximum(arr,2)---->max(arr(2),11) => max(12,11)
+     * -> findMaximum(arr,1) ---> max(arr[1],11)==>max(4,11)
+     * its time complexity is O(N).
+     * M(n) = O(1)+M(N-1)
+     * M(1) = O(1)+M(1-1)=>O(1)
+     * M(n-1)=O(1)+M((n-1)-1)
+     * M(n-2)=O(1)+M((n-2)-1)
+     * <p>
+     * = 1+M(n-1)
+     * = 1+1+M(n-2)
+     * = 3+M(N-3)
+     * = lets make constant a variable a
+     * =a+M(n-a)
+     * = lest a ==1
+     * = n-1+M(n-(n-1))
+     * = n
+     */
+    private int findMaximum(int[] arr, int length) { // --------->M(n)
+        if (length == 1) return arr[0]; // ---------->O(1)
+        return Math.max(arr[length - 1], findMaximum(arr, length - 1));//------>M(n-1)
     }
 }
