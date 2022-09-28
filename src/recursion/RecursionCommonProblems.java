@@ -28,6 +28,10 @@ public class RecursionCommonProblems {
         int arr1[] = {11, 4, 12, 9};
         System.out.println(obj.findMaximum(arr1, arr1.length));
 
+        System.out.println(obj.findComplexity(5));
+
+        obj.printPowerOfTwo(50);
+
 
     }
 
@@ -231,4 +235,42 @@ public class RecursionCommonProblems {
         if (length == 1) return arr[0]; // ---------->O(1)
         return Math.max(arr[length - 1], findMaximum(arr, length - 1));//------>M(n-1)
     }
+
+    /**
+     * How to measure multiple recursive calls time complexity
+     * it's like if we call num=4.
+     * f(4)
+     * - f(3) + f(3) two times
+     * this will repeat till f(1).
+     * Depth of tree is 4.
+     * Level 0 1 node
+     * Level 1 => 2
+     * Level 2 => 4
+     * Level 3 => 8.
+     * 2 pow 0 + 2 pow 1 + .... + 2 pow n = 2 pow(n)-1.
+     * we can write O(2 pow n).
+     * its like O(branches pow depth).
+     * like we have two branches because we calling it two time (n-1) +(n-1).
+     */
+    private int findComplexity(int num) {
+        if (num <= 1) return 1;
+        return findComplexity(num - 1) + findComplexity(num - 1);
+    }
+
+    /**
+     * time complexity is o(logN)
+     * because each time we divide the n by 2 so we reduce in half.
+     */
+    private int printPowerOfTwo(int num) {
+        if (num == 0 || num == 1) {
+            if (num == 1) System.out.println(num);
+            return num;
+        } else {
+            int prev = printPowerOfTwo(num / 2); // -------- o(n/2) 
+            int curr = prev * 2;
+            System.out.println(curr);
+            return curr;
+        }
+    }
+
 }
