@@ -5,14 +5,26 @@ public class PrintNumbers {
         // printNumber(10);
         System.out.println(printNumbersBetweenTwoNumbers(10, 0));
         System.out.println(printNumbersBetweenTwoNumbers(0, 10));
+        // ==================
+        System.out.println();
+        printNumber(10);
+        System.out.println();
+        printNumberInReverseOrder(10);
+
     }
 
     private static void printNumber(int number) {
         if (number == 0) return;
         else {
-            System.out.print(number - 1 + " ");
+            System.out.print(number+ " ");
             printNumber(number - 1);
         }
+    }
+
+    private static void printNumberInReverseOrder(int number) {
+        printNumber(number - 1);
+        System.out.print(number + " ");
+        if (number == 0) return;
     }
 
     private static int printNumbersBetweenTwoNumbers(int num1, int num2) {

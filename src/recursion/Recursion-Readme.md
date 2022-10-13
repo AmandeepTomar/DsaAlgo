@@ -9,15 +9,31 @@
     - Find a base condition, After that we will not call function itself.
     - Its call same function multiple times with different input.
     - After each step, We have smaller input to make the problem smaller.
+- **What is tail and head recursion**
+- Tail Recursion
+    - When the recursive call is in the tail
+- Head recursion
+    - When we call the recursive function first then perform some computation and end with base case.
 
 ```java
 class RecursionExample {
 
     public void printNumber(int num) {
+        // this one is tail recursion 
         if (num == 0) {
             return;  // this one is base condition
         }
+        sout(num);
         printNumber(num - 1); // we try with smaller input to make problem small.
+    }
+
+    public void printNumber(int num) {
+        // this one is Head recursion
+        printNumber(num - 1); // we try with smaller input to make problem small.
+        sout(num);
+        if (num == 0) {
+            return;  // this one is base condition
+        }
     }
 }
 ```
@@ -39,13 +55,16 @@ class RecursionExample {
 - When we use memoization in recursion
 
 #### When to avoid
+
 - When time and space is matter.
 - We should not use recursion for the application that are installed on less memory device, like airbags , mobile eyc.
 
 ### How to write recursive function
+
 - STEP 1 -> finds recursive i.e problem into sub problems.
 - STEP 2 -> find base conditions. Stopping criteria
 - STEP 3 -> Handle un intentional use cases.
+
 ### Recursion Vs Iterative
 
 #### Recursion
