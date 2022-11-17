@@ -3,7 +3,7 @@ package recursion;
 public class RecursionCommonProblems {
     public static void main(String[] args) {
         RecursionCommonProblems obj = new RecursionCommonProblems();
-        int num = 16;
+        int num = 6;
         System.out.println(obj.sumOfNumber(num));
         int sumOfDigits = 55;
         System.out.println(obj.sunOfDigitsInNumber(sumOfDigits));
@@ -32,6 +32,8 @@ public class RecursionCommonProblems {
 
         obj.printPowerOfTwo(50);
 
+        obj.sumOfNumberUsingHeadRecursion(6);
+
 
     }
 
@@ -44,9 +46,18 @@ public class RecursionCommonProblems {
      * 10+9+8+7+6+5+4+3+2+1 =
      */
     private int sumOfNumber(int num) {
+        //this is using tail recursion
         if (num < 0) return -1;
         if (num == 0 || num == 1) return num;
         return num + sumOfNumber(num - 1);
+    }
+
+    private void sumOfNumberUsingHeadRecursion(int num) {
+        //this is using tail recursion
+
+        int sum= num + sumOfNumber(num - 1);
+        System.out.println("Sum is "+sum);
+        if (num < 0) {sum =0;}
     }
 
     /**

@@ -10,10 +10,15 @@
     - Its call same function multiple times with different input.
     - After each step, We have smaller input to make the problem smaller.
 - **What is tail and head recursion**
-- Tail Recursion
-    - When the recursive call is in the tail
-- Head recursion
+- **Tail Recursion**
+    - When the recursive call is in the tail(Last line of the function)
+- **Head recursion**
     - When we call the recursive function first then perform some computation and end with base case.
+- **Linear Recursion**
+  - like fn->fn-1->fn-2
+- **Tree Recursion**
+  - It is used in backtracking, DFS , permutation. 
+  - Its look like tree , like we have call fn,it dived more than one recursion calls.
 
 ```java
 class RecursionExample {
