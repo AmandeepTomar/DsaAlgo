@@ -13,6 +13,8 @@ public class RecursionCommonProblems {
         System.out.println(obj.findGreatestCommonDivisor(48, 16));
 
         System.out.println(obj.findBinaryFromDecimal(10));
+        obj.findBinaryFromDecimal2Way(10);
+        System.out.println();
 
         int arr[] = {1, 2, 3, 4, 5};
         System.out.println(obj.productOfArray(arr, arr.length - 1));
@@ -55,9 +57,11 @@ public class RecursionCommonProblems {
     private void sumOfNumberUsingHeadRecursion(int num) {
         //this is using tail recursion
 
-        int sum= num + sumOfNumber(num - 1);
-        System.out.println("Sum is "+sum);
-        if (num < 0) {sum =0;}
+        int sum = num + sumOfNumber(num - 1);
+        System.out.println("Sum is " + sum);
+        if (num < 0) {
+            sum = 0;
+        }
     }
 
     /**
@@ -134,6 +138,14 @@ public class RecursionCommonProblems {
         if (num == 0) return 0;
         return num % 2 + 10 * findBinaryFromDecimal(num / 2);
     }
+
+    private void findBinaryFromDecimal2Way(int num) {
+        if (num < 0) return;
+        if (num == 0) return;
+        findBinaryFromDecimal2Way(num / 2);
+        System.out.print(num % 2);
+    }
+
 
     /**
      * int arr[] = {1, 2, 3, 4, 5};
